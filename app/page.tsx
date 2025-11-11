@@ -23,7 +23,7 @@ export default function ComingSoonPage() {
       <div className="pointer-events-none absolute inset-0 -z-20">
         <GLSLHills />
       </div>
-      <div className="pointer-events-none absolute inset-0 z-10 hidden md:block">
+      <div className="pointer-events-none absolute inset-0 z-10">
         <div className="pointer-events-auto h-full w-full">
           <ImageTrail items={galleryItems} variant={1} />
         </div>

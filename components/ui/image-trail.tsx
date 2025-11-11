@@ -83,7 +83,7 @@ class ImageTrailVariant1 implements ImageTrailController {
   private zIndexVal = 1;
   private activeImagesCount = 0;
   private isIdle = true;
-  private threshold = 80;
+  private threshold = 70;
   private mousePos = { x: 0, y: 0 };
   private lastMousePos = { x: 0, y: 0 };
   private cacheMousePos = { x: 0, y: 0 };
@@ -162,8 +162,8 @@ class ImageTrailVariant1 implements ImageTrailController {
           y: this.cacheMousePos.y - height / 2,
         },
         {
-          duration: 0.4,
-          ease: 'power1',
+          duration: 0.6,
+          ease: 'power2.out',
           x: this.mousePos.x - width / 2,
           y: this.mousePos.y - height / 2,
         },
@@ -172,12 +172,12 @@ class ImageTrailVariant1 implements ImageTrailController {
       .to(
         img.DOM.el,
         {
-          duration: 0.8,
-          ease: 'power3',
+          duration: 1.6,
+          ease: 'power2.inOut',
           opacity: 0,
           scale: 0.2,
         },
-        0.6
+        0.9
       );
   }
 
