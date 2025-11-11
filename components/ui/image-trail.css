@@ -51,3 +51,22 @@
   text-transform: uppercase;
 }
 
+@media (max-width: 1024px) {
+  .content__img {
+    width: 160px;
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .content__img {
+    width: 120px;
+    border-radius: 12px;
+  }
+
+  .content__img-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+  }
+}
+

@@ -71,18 +71,22 @@ export default function CountdownTimer({ target, className = '', label }: Countd
 
   if (!isMounted) {
     return (
-      <div className={`flex flex-col items-center gap-4 ${className}`}>
+      <div className={`flex flex-col items-center gap-3 sm:gap-4 ${className}`}>
         {label && (
-          <span className="text-sm font-semibold uppercase tracking-[0.6em] text-white/70">
+          <span className="text-xs font-semibold uppercase tracking-[0.5em] text-white/70 sm:text-sm">
             {label}
           </span>
         )}
-        <div className="flex items-center gap-6 text-[#6a4dfc]">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-[#6a4dfc] sm:gap-6">
           {['days', 'hours', 'minutes', 'seconds'].map((unit, index) => (
-            <div key={unit} className="flex items-center gap-2">
-              <span className="text-5xl font-semibold tabular-nums opacity-70">--</span>
-              <span className="text-base uppercase tracking-[0.4em] opacity-50">{unit}</span>
-              {index < 3 && <span className="text-4xl font-semibold opacity-40">:</span>}
+            <div key={unit} className="flex items-center gap-2 sm:gap-3">
+              <span className="text-3xl font-semibold tabular-nums opacity-70 sm:text-4xl md:text-5xl">
+                --
+              </span>
+              <span className="text-xs uppercase tracking-[0.35em] opacity-50 sm:text-sm">{unit}</span>
+              {index < 3 && (
+                <span className="text-2xl font-semibold opacity-40 sm:text-3xl md:text-4xl">:</span>
+              )}
             </div>
           ))}
         </div>
@@ -91,15 +95,15 @@ export default function CountdownTimer({ target, className = '', label }: Countd
   }
 
   return (
-    <div className={`flex flex-col items-center gap-4 ${className}`}>
+    <div className={`flex flex-col items-center gap-3 sm:gap-4 ${className}`}>
       {label && (
-        <span className="text-sm font-semibold uppercase tracking-[0.6em] text-white/70">
+        <span className="text-xs font-semibold uppercase tracking-[0.5em] text-white/70 sm:text-sm">
           {label}
         </span>
       )}
-      <div className="flex items-center gap-6">
+      <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
         {(['days', 'hours', 'minutes', 'seconds'] as const).map((unit, index, units) => (
-          <div key={unit} className="flex items-center gap-2">
+          <div key={unit} className="flex items-center gap-2 sm:gap-3">
             <BlurText
               key={`${unit}-${timeLeft[unit]}`}
               text={timeLeft[unit]}
@@ -107,13 +111,13 @@ export default function CountdownTimer({ target, className = '', label }: Countd
               triggerOnMount
               valueKey={timeLeft[unit]}
               stepDuration={0.3}
-              className="text-5xl font-semibold tabular-nums bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text text-transparent"
+              className="text-3xl font-semibold tabular-nums bg-gradient-to-r from-[#4f46e5] to-[#9333ea] bg-clip-text text-transparent sm:text-4xl md:text-5xl"
             />
-            <span className="text-base uppercase tracking-[0.4em] text-[#6a4dfc]">
+            <span className="text-xs uppercase tracking-[0.35em] text-[#6a4dfc] sm:text-sm">
               {unit}
             </span>
             {index < units.length - 1 && (
-              <span className="text-4xl font-semibold text-[#6a4dfc]">
+              <span className="text-2xl font-semibold text-[#6a4dfc] sm:text-3xl md:text-4xl">
                 :
               </span>
             )}
