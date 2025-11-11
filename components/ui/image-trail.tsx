@@ -93,7 +93,7 @@ class ImageTrailVariant1 implements ImageTrailController {
 
   constructor(container: HTMLDivElement) {
     this.container = container;
-    this.images = [...container.querySelectorAll<HTMLDivElement>('.content__img')].map(
+    this.images = Array.from(container.querySelectorAll<HTMLDivElement>('.content__img')).map(
       (img) => new ImageItem(img)
     );
     this.imagesTotal = this.images.length;
