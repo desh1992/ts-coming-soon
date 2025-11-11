@@ -7,12 +7,14 @@ import './image-trail.css';
 
 type PointerEventLike = MouseEvent | TouchEvent;
 
+const isTouchEvent = (event: PointerEventLike): event is TouchEvent => 'touches' in event;
+
 function lerp(a: number, b: number, n: number): number {
   return (1 - n) * a + n * b;
 }
 
 function getLocalPointerPos(e: PointerEventLike, rect: DOMRect): { x: number; y: number } {
-  if ('touches' in e && e.touches.length > 0) {
+  if (isTouchEvent(e) && e.touches.length > 0) {
     const touch = e.touches[0];
     return {
       x: touch.clientX - rect.left,
@@ -20,9 +22,11 @@ function getLocalPointerPos(e: PointerEventLike, rect: DOMRect): { x: number; y:
     };
   }
 
+  const { clientX, clientY } = e as MouseEvent;
+
   return {
-    x: e.clientX - rect.left,
-    y: e.clientY - rect.top,
+    x: clientX - rect.left,
+    y: clientY - rect.top,
   };
 }
 
